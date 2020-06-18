@@ -2,8 +2,16 @@
     <title>输入框</title>
     <h1>输入框</h1>
     <hr>
-    <input id='name 'type="text" style="height:30px;width:120px;" id='name' />
+    <input id='input 'type="text" placeholder="请输入你的姓名" style="height:30px;width:120px;" name='name' />
     <input type="submit" value="确认"  onclick="test()"/>
+    <div id='html'></div>
+    <script>
+        var x=  document.getElementById("input")//获取输入框元素
+        var y=  document.getElementById("html") //获取id为html的元素
+function btn(){
+        y.innerHTML = x.value; //将输入框的值赋给div标签
+        }
+    </script>
     <br>
     <a href='https:/XXiaoA.github.io'>Return</a>
 </html>
