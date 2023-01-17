@@ -16,15 +16,15 @@
   <meta name="author" content="XXiaoA">
   <meta name="keywords" content="">
   
-    <meta name="description" content="制作 U 盘启动盘推荐找个靠谱的 u 盘安装 ventoy。 ISO 文件可去 Arch 官网 下载, 一定要检验下载下来的文件的完整性, 如 sha256sums 等。 如果没问题，把 ISO 文件拷进 u 盘的数据分区即可。 安装然后插着 u 盘启动电脑，按 f10 或 f12 进 BIOS 设置界面, 在设置里把引导模式改为 uefi only（或关掉 legacy、csm）。记得保存设置。">
+    <meta name="description" content="制作 U 盘启动盘推荐找个靠谱的 u 盘安装 ventoy。 ISO 文件可去 Arch 官网 下载, 一定要检验下载下来的文件的完整性, 如 sha256sums 等。 如果没问题，把 ISO 文件拷进 u 盘的数据分区即可。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次安装 Arch Linux">
 <meta property="og:url" content="https://xxiaoa.github.io/posts/45550377/index.html">
 <meta property="og:site_name" content="XXiaoA&#39;s Blog">
-<meta property="og:description" content="制作 U 盘启动盘推荐找个靠谱的 u 盘安装 ventoy。 ISO 文件可去 Arch 官网 下载, 一定要检验下载下来的文件的完整性, 如 sha256sums 等。 如果没问题，把 ISO 文件拷进 u 盘的数据分区即可。 安装然后插着 u 盘启动电脑，按 f10 或 f12 进 BIOS 设置界面, 在设置里把引导模式改为 uefi only（或关掉 legacy、csm）。记得保存设置。">
+<meta property="og:description" content="制作 U 盘启动盘推荐找个靠谱的 u 盘安装 ventoy。 ISO 文件可去 Arch 官网 下载, 一定要检验下载下来的文件的完整性, 如 sha256sums 等。 如果没问题，把 ISO 文件拷进 u 盘的数据分区即可。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-15T07:59:08.000Z">
-<meta property="article:modified_time" content="2023-01-17T06:55:46.914Z">
+<meta property="article:modified_time" content="2023-01-17T06:59:19.814Z">
 <meta property="article:author" content="XXiaoA">
 <meta property="article:tag" content="arch linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -302,6 +302,8 @@
                 
                 <h2 id="制作-U-盘启动盘"><a href="#制作-U-盘启动盘" class="headerlink" title="制作 U 盘启动盘"></a>制作 U 盘启动盘</h2><p>推荐找个<strong>靠谱</strong>的 u 盘安装 <a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy</a>。</p>
 <p>ISO 文件可去 <a target="_blank" rel="noopener" href="https://archlinux.org/download/">Arch 官网</a> 下载, 一定要检验下载下来的文件的完整性, 如 sha256sums 等。 如果没问题，把 ISO 文件拷进 u 盘的数据分区即可。</p>
+<span id="more"></span>
+
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>然后插着 u 盘启动电脑，按 f10 或 f12 进 BIOS 设置界面, 在设置里把引导模式改为 uefi only（或关掉 legacy、csm）。记得保存设置。然后进入 ventoy 菜单，选择刚刚的 ISO 文件。</p>
 <h3 id="禁用-reflector-服务"><a href="#禁用-reflector-服务" class="headerlink" title="禁用 reflector 服务"></a>禁用 reflector 服务</h3><p>进入 Live 环境后，先禁用 reflector 服务，方便后续选择镜像。 运行：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">systemctl stop reflector.service<br></code></pre></td></tr></table></figure>
