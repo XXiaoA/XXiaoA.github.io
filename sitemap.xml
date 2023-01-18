@@ -2,78 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xxiaoa.github.io/posts/45550377/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/posts/15210477/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/posts/4ac5e739/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/posts/db16e61e/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/posts/e62c38c4/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/posts/82a368dd/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/posts/d42e5e77/</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xxiaoa.github.io/about/index.html</loc>
-    
-    <lastmod>2023-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://xxiaoa.github.io/posts/2dd3bdb5/</loc>
     
     <lastmod>2023-01-18</lastmod>
@@ -154,6 +82,78 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://xxiaoa.github.io/posts/45550377/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/posts/15210477/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/posts/4ac5e739/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/posts/db16e61e/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/posts/e62c38c4/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/posts/82a368dd/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/posts/d42e5e77/</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/about/index.html</loc>
+    
+    <lastmod>2023-01-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://xxiaoa.github.io/</loc>
@@ -165,6 +165,13 @@
   
   <url>
     <loc>https://xxiaoa.github.io/tags/hugo/</loc>
+    <lastmod>2023-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xxiaoa.github.io/tags/hexo/</loc>
     <lastmod>2023-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
