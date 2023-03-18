@@ -24,7 +24,7 @@
 <meta property="og:description" content="制作 U 盘启动盘推荐找个靠谱的 u 盘安装 ventoy。 ISO 文件可去 Arch 官网 下载, 一定要检验下载下来的文件的完整性, 如 sha256sums 等。 如果没问题，把 ISO 文件拷进 u 盘的数据分区即可。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-15T15:59:08.000Z">
-<meta property="article:modified_time" content="2023-02-10T07:54:49.404Z">
+<meta property="article:modified_time" content="2023-03-18T03:38:01.483Z">
 <meta property="article:author" content="XXiaoA">
 <meta property="article:tag" content="arch linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k words
+          3.1k words
         
       </span>
     
@@ -362,6 +362,9 @@
 </tr>
 </tbody></table>
 <p>操作完后记得写入。可以使用 <code>fdisk -l</code> 查看分区情况。<br></p>
+<p>格式化 EFI 分区</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">mkfs.fat -F32 /dev/sda1<br></code></pre></td></tr></table></figure>
+
 <p>格式化 swap 分区。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">mkswap /dev/sda2<br></code></pre></td></tr></table></figure>
 
@@ -387,7 +390,7 @@
 
 <p>可使用 <code>df -h</code> 和 <code>free -h</code> 复查挂载情况。</p>
 <h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>使用 <code>pacstrap</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs<br>pacstrap -K /mnt dhcpcd iwd vim sudo fish<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs<br>pacstrap -K /mnt dhcpcd networkmanager vim sudo fish<br></code></pre></td></tr></table></figure>
 
 <h3 id="生成-fstab"><a href="#生成-fstab" class="headerlink" title="生成 fstab"></a>生成 fstab</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">genfstab -U /mnt &gt; /mnt/etc/fstab<br></code></pre></td></tr></table></figure>
 
