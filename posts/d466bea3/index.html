@@ -16,24 +16,22 @@
   <meta name="author" content="XXiaoA">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2022 是神奇的一年，这一年，我重拾了编程，经历了中考，最后在年末阳了一次等等……">
+    <meta name="description" content="继安装好 Arch 后，我们来对它进行一些安装、配置，这里我选择 bspwm 作为 WM。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的2022">
-<meta property="og:url" content="https://xxiaoa.github.io/posts/82a368dd/index.html">
+<meta property="og:title" content="为 Arch 安装并配置 Bspwm 环境">
+<meta property="og:url" content="https://xxiaoa.github.io/posts/d466bea3/index.html">
 <meta property="og:site_name" content="XXiaoA&#39;s Blog">
-<meta property="og:description" content="2022 是神奇的一年，这一年，我重拾了编程，经历了中考，最后在年末阳了一次等等……">
+<meta property="og:description" content="继安装好 Arch 后，我们来对它进行一些安装、配置，这里我选择 bspwm 作为 WM。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2023/01/09/7v6aBQ81W2Lufib.png">
-<meta property="article:published_time" content="2023-01-08T22:57:44.000Z">
+<meta property="article:published_time" content="2023-01-17T15:00:27.000Z">
 <meta property="article:modified_time" content="2023-04-01T14:05:26.343Z">
 <meta property="article:author" content="XXiaoA">
-<meta property="article:tag" content="others">
+<meta property="article:tag" content="arch linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2023/01/09/7v6aBQ81W2Lufib.png">
   
   
   
-  <title>我的2022 - XXiaoA&#39;s Blog</title>
+  <title>为 Arch 安装并配置 Bspwm 环境 - XXiaoA&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="我的2022"></span>
+            <span id="subtitle" data-typed-text="为 Arch 安装并配置 Bspwm 环境"></span>
           
         </div>
 
@@ -228,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-08 22:57" pubdate>
-          January 8, 2023 pm
+        <time datetime="2023-01-17 15:00" pubdate>
+          January 17, 2023 pm
         </time>
       </span>
     
@@ -240,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          934 words
+          3.6k words
         
       </span>
     
@@ -251,7 +249,7 @@
         
         
         
-          8 mins
+          31 mins
         
       </span>
     
@@ -297,37 +295,114 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">我的2022</h1>
+            <h1 style="display: none">为 Arch 安装并配置 Bspwm 环境</h1>
             
             
               <div class="markdown-body">
                 
-                <p>2022 是神奇的一年，这一年，我重拾了编程，经历了中考，最后在年末阳了一次等等……</p>
+                <p>继安装好 Arch 后，我们来对它进行一些安装、配置，这里我选择 <a target="_blank" rel="noopener" href="https://github.com/baskerville/bspwm">bspwm</a> 作为 WM。</p>
 <span id="more"></span>
 
-<h1 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h1><p>说来也神奇，初二的一年多里，我和编程可谓是 “风马牛，不相及” 。忘记了最初是因为什么，让我在忙碌的初三把这丢了一年多的编程重拾了起来。<br></p>
-<p>既然要编程，那我肯定需要工具。那我用什么呢？虽说是我用，但可以供我选择的其实并不多。那时，家里并没有电脑，于是，我把 “罪恶” 的目光投向了 termux + <code>neovim</code> 。当然，这是十分痛苦的。后来，neovim 也成了我为数不多用过，却离不开的 editor&#x2F;IDE。（其实我根本没尝试过如 vscode 等其他 editor&#x2F;IDE。🤣）。</p>
-<p>中考后，我有了第一台电脑。我先给它安装上了 Ubuntu，后来又加入了 Arch Linux 大军。</p>
-<p>在这一年的时间里，我：</p>
-<ul>
-<li>学习了 lua，配置了一个我很满意的 nvim 配置。</li>
-<li>写了自己第一个 nvim 插件 <a target="_blank" rel="noopener" href="https://github.com/XXiaoA/ns-textobject.nvim">ns-textobject.nvim</a></li>
-<li>学了一点 Rust, 写了一个练手的 Dotfiles Manager: <a target="_blank" rel="noopener" href="https://github.com/XXiaoA/xdm">xdm</a>。因为对 Dotfiles Manager 的需求不高，现在也一直在用这个小工具管理我的点文件。</li>
-<li>参加了学校的信息竞赛课，开始学习 cpp，成为了一名没有打过任何比赛的业余 OIer（或许都不算）。</li>
-<li>git commit 方面，从一开始的全是 update 和 save，到现在变得更加规范。</li>
-<li>提了第一个 issue, 解决了别人第一个 issue。</li>
-<li>提（并被合并）了第一个 PR，合并了第一个别人的 PR。</li>
-<li>Github 斩获 30+ stars⭐</li>
-</ul>
-<br>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>我们这里使用 <a target="_blank" rel="noopener" href="https://networkmanager.dev/">NetworkManager</a> 来连接网络连接。</p>
+<div class="note note-warning">
+            <p>请确保没有其他网络服务在运行。</p>
+          </div>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">systemctl <span class="hljs-built_in">enable</span> --now NetworkManager <span class="hljs-comment"># 启动 NetworkManager</span><br>nmcli dev wifi list <span class="hljs-comment"># 显示附近的 Wi-Fi 网络</span><br>nmcli dev wifi connect <span class="hljs-string">&quot;Wi-Fi名（SSID）&quot;</span> password <span class="hljs-string">&quot;网络密码&quot;</span> <span class="hljs-comment"># 连接指定的无线网络</span><br></code></pre></td></tr></table></figure>
 
-<p>这里水一张 github 的热力图<br><img src="https://s2.loli.net/2023/01/09/7v6aBQ81W2Lufib.png" srcset="/img/loading.gif" lazyload alt="Github"></p>
-<h1 id="中考"><a href="#中考" class="headerlink" title="中考"></a>中考</h1><p>中考，许多人面对的第一个人生的转折点。<br></p>
-<p>面对这个转折点，有的人超常发挥，有的人遗憾落榜。而我，两者都不是。我发挥得和平时的成绩差不多，进入了一个还不错的学校。不过我相信，每一种安排都有它的意义。</p>
-<p>进入高中后，结交了许多好朋友。最满意的还是学校的食堂，是它，让我知道初中三年吃的都有多<strong>难吃</strong>。</p>
-<h1 id="疫情放开"><a href="#疫情放开" class="headerlink" title="疫情放开"></a>疫情放开</h1><p>疫情防控三年，而放开只是一夜之间的事。我也不知道说什么了。<del>所以，谁来还我逝去的青春</del></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>新的一年，希望我能继续进步，继续做我热爱的事： code，并且有一个 repository 收获 100+ stars！<br></p>
-<p>2022 已经过去，希望我在 2023 能够 <strong>码力UPUP</strong>，放下过去，珍惜现在，把握未来！</p>
+<p>然后我们可以 ping 一下测试是否连接成功：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ping www.bilibili.com<br></code></pre></td></tr></table></figure>
+
+<h2 id="安装微码"><a href="#安装微码" class="headerlink" title="安装微码"></a>安装微码</h2><p>安装对应芯片的微码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">pacman -S intel-ucode <span class="hljs-comment"># Intel</span><br>pacman -S amd-ucode <span class="hljs-comment"># AMD</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>除了 root 用户外，我们再添加一个非 root 用户以日常使用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">useradd -m -G wheel -s /bin/fish myusername<br></code></pre></td></tr></table></figure>
+
+<p>设置新用户密码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">passwd myusername<br></code></pre></td></tr></table></figure>
+
+<p>允许用户使用 sudo 命令：</p>
+<ol>
+<li>编辑 sudoers 文件 <code>vim /etc/sudoers</code></li>
+<li>去掉 <code>#%wheel ALL=(ALL:ALL) ALL</code> 前面的注释</li>
+</ol>
+<h2 id="添加-pacman-源"><a href="#添加-pacman-源" class="headerlink" title="添加 pacman 源"></a>添加 pacman 源</h2><p>编辑 <code>/etc/pacman.conf</code> 文件:</p>
+<ol>
+<li>去掉文件末尾 <code>[multilib]</code> 一节中两行的注释，来开启 32 位库支持</li>
+<li>在文档结尾加入以下内容来添加 archlinuxcn 源：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">[archlinuxcn]<br>Server = https:<span class="hljs-regexp">//mi</span>rrors.ustc.edu.cn<span class="hljs-regexp">/archlinuxcn/</span><span class="hljs-variable">$arch</span> <span class="hljs-comment"># 中国科学技术大学开源镜像站</span><br>Server = https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/archlinuxcn/</span><span class="hljs-variable">$arch</span> <span class="hljs-comment"># 清华大学开源软件镜像站</span><br>Server = https:<span class="hljs-regexp">//mi</span>rrors.hit.edu.cn<span class="hljs-regexp">/archlinuxcn/</span><span class="hljs-variable">$arch</span> <span class="hljs-comment"># 哈尔滨工业大学开源镜像站</span><br>Server = https:<span class="hljs-regexp">//</span>repo.huaweicloud.com<span class="hljs-regexp">/archlinuxcn/</span><span class="hljs-variable">$arch</span> <span class="hljs-comment"># 华为开源镜像站</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>然后运行 <code>pacman -Syyu</code></p>
+<p>接下来就可以安装 AUR Helper 了，我选择的是paru：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">pacman -S archlinuxcn-keyring<br>pacman -S paru<br></code></pre></td></tr></table></figure>
+
+<h2 id="安装-bspwm"><a href="#安装-bspwm" class="headerlink" title="安装 bspwm"></a>安装 bspwm</h2><p>安装一些必要的包：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S bspwm sxhkd xorg rofi lxdm feh polybar picom dunst firefox wezterm<br>paru -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra<br></code></pre></td></tr></table></figure>
+
+<p>使用默认配置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">mkdir</span> -p ~/.config/sxhkd/ ~/.config/bspwm/<br><span class="hljs-built_in">cd</span> ~/.config<br><span class="hljs-built_in">cp</span> /usr/share/doc/bspwm/examples/bspwmrc bspwm/<br><span class="hljs-built_in">cp</span> /usr/share/doc/bspwm/examples/sxhkdrc sxhkd/<br></code></pre></td></tr></table></figure>
+
+<p>然后可以修改 <code>sxhkdrc</code> 文件的一些快捷键，如终端等</p>
+<p>启动显示管理器，然后重启：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo systemctl <span class="hljs-built_in">enable</span> lxdm<br>reboot<br></code></pre></td></tr></table></figure>
+
+<p>然后在登陆界面的左下角 <code>Desktop</code> 选择 bspwm，登陆即可。</p>
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><p>安装 <code>xdg-user-dirs</code> 来快速生成一些常用目录</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S xdg-user-dirs<br>LC_ALL=C xdg-user-dirs-update --force<br></code></pre></td></tr></table></figure>
+
+<p>安装 <code>clash</code> 联通世界</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S clash<br></code></pre></td></tr></table></figure>
+
+<p>接下来的配置可以看<a href="https://xxiaoa.github.io/posts/44a995c1/">之前的文章</a>。</p>
+<p>安装 <code>openssh</code> 生成 ssh key</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S openssh<br>git config --global user.name <span class="hljs-string">&quot;name&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;email&quot;</span><br>ssh-keygen -t rsa -C <span class="hljs-string">&quot;email&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后把 <code>~/.ssh/id_rsa.pub</code> 的内容上传到 Github： <code>settings</code>-&gt;<code>SSH and GPG keys</code>-&gt;<code>New SSH key</code></p>
+<p>测试是否成功：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
+
+<p>接下来拉取 dotfiles 并使用 <a target="_blank" rel="noopener" href="https://github.com/XXiaoA/xdm">xdm</a> 来快速管理，建立软连接：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S xdm<br>git <span class="hljs-built_in">clone</span> git@github.com:XXiaoA/dotfiles.git ~/<br><span class="hljs-built_in">cd</span> ~/dotfiles/<br>xdm s<br></code></pre></td></tr></table></figure>
+
+<p>安装一些其他的常用软件和字体：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S ttf-maple-latest nerd-fonts-complete ttf-lxgw-wenkai<br>paru -S clang axel wget tmux starship zoxide pkgfile usbutils trash-cli rustup keymapper ripgrep xclip node npm fd neovim-git python-pynvim unzip telegram-desktop-megumifox bat exa udisks2 udiskie network-manager-applet difftastic clang fzf maim mpv simplescreenrecorder android-file-transfer<br></code></pre></td></tr></table></figure>
+
+<p>开启 <code>keymapper</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo systemctl <span class="hljs-built_in">enable</span> --now keymapperd.service<br></code></pre></td></tr></table></figure>
+
+<h2 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h2><p>更多可以查看这个<a target="_blank" rel="noopener" href="https://arch.icekylin.online/guide/rookie/graphic-driver.html#archlinux-%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8">网站</a></p>
+<div class="note note-info">
+            <p>Fuck You, NVIDIA</p>
+          </div>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel<br>sudo pacman -S nvidia nvidia-settings lib32-nvidia-utils<br>sudo mkinitcpio -P<br></code></pre></td></tr></table></figure>
+
+<h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>安装 <code>fcitx5</code> 输入法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki  fcitx5-material-color<br></code></pre></td></tr></table></figure>
+
+<p>然后运行 <code>fcitx5-configtool</code> 进行添加配音输入法，配置外观，字体，云拼音等</p>
+<h2 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h2><p>使用 <code>pulseaudio</code> 提供声音服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S alsa-utils pulseaudio pavucontrol<br></code></pre></td></tr></table></figure>
+
+<h2 id="免密登陆"><a href="#免密登陆" class="headerlink" title="免密登陆"></a>免密登陆</h2><p>在 <code>/etc/lxdm/lxdm.conf</code> 文件中添加 <code>autologin=username</code>。其中的 username 改成对应的用户名。然后可以顺便添加 <code>numlock=1</code> 来开机启动 numlock</p>
+<h2 id="Grub-Theme"><a href="#Grub-Theme" class="headerlink" title="Grub Theme"></a>Grub Theme</h2><p>在 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&amp;ord=rating">https://www.gnome-look.org/browse?cat=109&amp;ord=rating</a> 等网站寻找然后下载想要的主题。然后解压缩，把得到的主题文件夹复制到 <code>/boot/grub/themes/</code> 目录（如果没有就创建）。修改 <code>/etc/default/grub</code> 文件，把 <code>GRUB_THEME</code> 指向主题目录下的 <code>theme.txt</code> 文件，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conf">GRUB_THEME=&quot;/boot/grub/themes/darkmatter/theme.txt&quot;<br></code></pre></td></tr></table></figure>
+
+<p>最后更新 grub.cfg 文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+
+<h2 id="光标主题"><a href="#光标主题" class="headerlink" title="光标主题"></a>光标主题</h2><p>在 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=107&amp;ord=rating">https://www.gnome-look.org/browse?cat=107&amp;ord=rating</a> 下载主题。然后解压到 <code>~/.local/share/icons/</code> 或者 <code>~/.icons/</code> 目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">mkdir</span> ~/.icons/<br>tar xvf foobar-cursor-theme.tar.gz -C ~/.icons/<br></code></pre></td></tr></table></figure>
+
+<p>以及安装的主题可以用以下命令查看</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">find /usr/share/icons ~/.local/share/icons ~/.icons -<span class="hljs-built_in">type</span> d -name <span class="hljs-string">&quot;cursors&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>创建 <code>~/.icons/default/index.theme</code> 文件并添加以下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">[icon theme]<br>Inherits=cursor_theme_name<br></code></pre></td></tr></table></figure>
+
+<p>然后创建 <code>~/.config/gtk-3.0/settings.ini</code> 文件并添加以下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">[Settings]<br>gtk-cursor-theme-name=cursor_theme_name<br></code></pre></td></tr></table></figure>
+
+<p>完成之后重启就应该生效了。如果只有在窗口生效那么在 <code>bspwmrc</code> 中添加 <code>xsetroot -cursor_name left_ptr</code></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://arch.icekylin.online/">https://arch.icekylin.online/</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/568211941">https://zhuanlan.zhihu.com/p/568211941</a><br><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/">https://wiki.archlinux.org/</a><br><a target="_blank" rel="noopener" href="https://github.com/baskerville/bspwm/issues/1231">https://github.com/baskerville/bspwm/issues/1231</a></p>
 
                 
               </div>
@@ -346,7 +421,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Others/" class="category-chain-item">Others</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
@@ -361,7 +436,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/others/">#others</a>
+        <a href="/tags/arch-linux/">#arch linux</a>
       
     </div>
   
@@ -373,8 +448,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>我的2022</div>
-      <div>https://xxiaoa.github.io/posts/82a368dd/</div>
+      <div>为 Arch 安装并配置 Bspwm 环境</div>
+      <div>https://xxiaoa.github.io/posts/d466bea3/</div>
     </div>
     <div class="license-meta">
       
@@ -386,7 +461,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 8, 2023</div>
+          <div>January 17, 2023</div>
         </div>
       
       
@@ -418,18 +493,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/45550377/" title="记一次安装 Arch Linux">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">记一次安装 Arch Linux</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/15210477/" title="Create an Auto-Save Script With Delay Feature">
-                        <span class="hidden-mobile">Create an Auto-Save Script With Delay Feature</span>
+                      <a href="/posts/45550377/" title="记一次安装 Arch Linux">
+                        <span class="hidden-mobile">记一次安装 Arch Linux</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
