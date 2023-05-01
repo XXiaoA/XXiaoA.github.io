@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Nvim: Error While Loading Shared Libraries: /usr/lib/lua/5.1/lpeg.so: Cannot Open Shared Object File: No Such File or Directory</title>
+    <link href="/posts/405d6517/"/>
+    <url>/posts/405d6517/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>After running <code>paru</code>, we tried to  open <code>nvim</code> but got a error like this</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">nvim: error while loading shared libraries: /usr/lib/lua/5.1/lpeg.so: cannot open shared object file: No such file or directory<br></code></pre></td></tr></table></figure><span id="more"></span><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Install <code>lua51-lpeg</code> to solve it:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">paru -S lua51-lpeg<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Nvim</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>arch linux</tag>
+      
+      <tag>nvim</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>为 Arch 安装并配置 Bspwm 环境</title>
     <link href="/posts/d466bea3/"/>
     <url>/posts/d466bea3/</url>
