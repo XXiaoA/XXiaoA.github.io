@@ -880,8 +880,8 @@ i.iconfont {
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
-    --fold-title-color: #3c4858;
-    --fold-border-color: #eaecef;
+    --fold-title-color: #c4c6c9;
+    --fold-border-color: #435266;
   }
   :root:not([data-user-color-scheme]) img {
     -webkit-filter: brightness(0.9);
@@ -918,8 +918,8 @@ i.iconfont {
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
-    --fold-title-color: #3c4858;
-    --fold-border-color: #eaecef;
+    --fold-title-color: #c4c6c9;
+    --fold-border-color: #435266;
   }
   [data-user-color-scheme="dark"] img {
     -webkit-filter: brightness(0.9);
@@ -1534,8 +1534,8 @@ post-custom {
 .post-content strong {
   font-weight: bold;
 }
-.page-content > *:first-child,
-.post-content > *:first-child {
+.page-content > *:nth-child(2),
+.post-content > *:nth-child(2) {
   margin-top: 0;
 }
 .page-content img,
@@ -1820,29 +1820,33 @@ mjx-container svg:focus,
   margin-right: 0.35rem;
   transition: transform 0.3s ease-out;
 }
-.fold .fold-content > * {
-  margin: 0;
-}
-.fold .fold-content > p {
+.fold .fold-content {
   padding: 1rem 1rem;
 }
-.fold-default {
-  background: rgba(187,187,187,0.25);
+.fold .fold-content > *:last-child {
+  margin-bottom: 0;
+}
+.fold-default,
+.fold-secondary {
+  background-color: rgba(187,187,187,0.25);
 }
 .fold-primary {
-  background: rgba(183,160,224,0.25);
+  background-color: rgba(183,160,224,0.25);
 }
 .fold-info {
-  background: rgba(160,197,228,0.25);
+  background-color: rgba(160,197,228,0.25);
 }
 .fold-success {
-  background: rgba(174,220,174,0.25);
+  background-color: rgba(174,220,174,0.25);
 }
 .fold-warning {
-  background: rgba(248,214,166,0.25);
+  background-color: rgba(248,214,166,0.25);
 }
 .fold-danger {
-  background: rgba(236,169,167,0.25);
+  background-color: rgba(236,169,167,0.25);
+}
+.fold-light {
+  background-color: rgba(254,254,254,0.25);
 }
 .note {
   padding: 0.75rem;
@@ -1860,14 +1864,14 @@ mjx-container svg:focus,
 .note *:last-child {
   margin-bottom: 0;
 }
+.note-default,
+.note-secondary {
+  background-color: rgba(187,187,187,0.25);
+  border-color: #777;
+}
 .note-primary {
   background-color: rgba(183,160,224,0.25);
   border-color: #6f42c1;
-}
-.note-secondary,
-note-default {
-  background-color: rgba(187,187,187,0.25);
-  border-color: #777;
 }
 .note-success {
   background-color: rgba(174,220,174,0.25);
@@ -1898,23 +1902,24 @@ note-default {
   color: var(--text-color);
   transition: color 0.2s ease-in-out;
 }
-.label-default {
-  background: rgba(187,187,187,0.25);
+.label-default,
+.label-secondary {
+  background-color: rgba(187,187,187,0.25);
 }
 .label-primary {
-  background: rgba(183,160,224,0.25);
+  background-color: rgba(183,160,224,0.25);
 }
 .label-info {
-  background: rgba(160,197,228,0.25);
+  background-color: rgba(160,197,228,0.25);
 }
 .label-success {
-  background: rgba(174,220,174,0.25);
+  background-color: rgba(174,220,174,0.25);
 }
 .label-warning {
-  background: rgba(248,214,166,0.25);
+  background-color: rgba(248,214,166,0.25);
 }
 .label-danger {
-  background: rgba(236,169,167,0.25);
+  background-color: rgba(236,169,167,0.25);
 }
 .markdown-body .btn {
   border: 1px solid var(--line-color);
