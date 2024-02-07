@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/04/16/F74vNgoub5nAJ3q.jpg">
 <meta property="article:published_time" content="2022-04-16T12:12:39.000Z">
-<meta property="article:modified_time" content="2024-01-26T13:14:51.377Z">
+<meta property="article:modified_time" content="2024-02-07T02:45:33.339Z">
 <meta property="article:author" content="XXiaoA">
 <meta property="article:tag" content="hugo">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          253 words
+          255 words
         
       </span>
     
@@ -313,16 +313,11 @@ A[Hard edge] --&gt;|Link text| B(Round edge)
 <span id="more"></span>
 
 <h2 id="在-Hugo-中使用-Mermaid"><a href="#在-Hugo-中使用-Mermaid" class="headerlink" title="在 Hugo 中使用 Mermaid"></a>在 Hugo 中使用 Mermaid</h2><p>在 <strong>站点配置目录</strong> 创建一个 <code>layouts/shortcodes/mermaid.html</code> 文件，写入以下内容：<br></p>
-<pre><code class="html">&lt;div class=&quot;mermaid&quot;&gt;
-&#123;&#123;.Inner&#125;&#125;
-&lt;/div&gt;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mermaid&quot;</span>&gt;</span><br>&#123;&#123;.Inner&#125;&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <p>然后再在 <code>layouts/partials/header.html</code> 文件添加以下内容：<br></p>
-<pre><code class="html">&#123;&#123; if (.Params.mermaid) &#125;&#125;
-&lt;!-- MermaidJS support --&gt;
-&lt;script async src=&quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&quot;&gt;&lt;/script&gt;
-&#123;&#123; end &#125;&#125;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html">&#123;&#123; if (.Params.mermaid) &#125;&#125;<br><span class="hljs-comment">&lt;!-- MermaidJS support --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>&#123;&#123; end &#125;&#125;<br></code></pre></td></tr></table></figure>
+
 <p>如果某一篇需要开启 mermaid 可以在 <code>front matter</code> 中加入 <code>mermaid: true</code> 即可<br></p>
 <p>也可以选择在 <code>archetypes/defaults.md</code> 里加入 mermaid: true ，这样每次创建 posts 时都会自动添加<br></p>
 <p>要在文章中使用 mermaid 可以添加以下内容，然后在中间添加 mermaid 语法（详见 <a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/">mermaid 官网</a>)<br><br><img src="https://s2.loli.net/2022/04/16/F74vNgoub5nAJ3q.jpg" srcset="/img/loading.gif" lazyload alt="IMG_20220416_200644.jpg"></p>
