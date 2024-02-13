@@ -730,13 +730,13 @@
       
         jQuery.ajax({
           type: 'GET',
-          url: 'https://api.eatrice.top/',
+          url: 'https://api.quotable.io/quotes/random?tags=famous-quotes&maxLength=140',
           headers: {},
           dataType: 'json',
           success: function(result) {
             var apiText;
             if (result) {
-              var keys = 'Content'.split(',');
+              var keys = 'content'.split(',');
               if (result instanceof Array) {
                 result = result[0];
               }
@@ -754,7 +754,7 @@
           },
           error: function(xhr, status, error) {
             if (error) {
-              console.error('Failed to request https://api.eatrice.top/:', error);
+              console.error('Failed to request https://api.quotable.io/quotes/random?tags=famous-quotes&amp;maxLength=140:', error);
             }
             typing(text);
           }
