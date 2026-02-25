@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>MATLAB Installation and Setup on Arch Linux</title>
+    <link href="/posts/4964769d/"/>
+    <url>/posts/4964769d/</url>
+    
+    <content type="html"><![CDATA[<p>On Arch Linux, the MATLAB installer often crashes with a <code>Segmentation fault (core dumped)</code>. In practice, this kind of crash could be caused by many reasons, one of which is that the libraries in Arch are too new.</p><p>Instead of downgrading system libraries on the host, it’s much safer to run the installer inside a containerized environment using <strong>Distrobox</strong>. This gives MATLAB a more conservative runtime without polluting the Arch system, while still sharing your home directory and display session with the host.</p><span id="more"></span><h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Ensure you have <code>distrobox</code> and a container engine (Podman or Docker) installed on your Arch host:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S distrobox podman<br></code></pre></td></tr></table></figure><h2 id="Create-the-MATLAB-Environment"><a href="#Create-the-MATLAB-Environment" class="headerlink" title="Create the MATLAB Environment"></a>Create the MATLAB Environment</h2><p>We’ll use <strong>Ubuntu 22.04</strong> as the guest OS:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">distrobox create -n matlab --image ubuntu:22.04<br>distrobox enter matlab<br></code></pre></td></tr></table></figure><p><strong>Inside the container</strong>, install the essential softwares and libraries:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install -y \<br>  xfce4-terminal xterm \<br>  dbus-x11 \<br>  libgbm1 libasound2 libnss3 libxtst6 libpulse0 \<br>  libgl1-mesa-dri libgl1-mesa-glx \<br>  fonts-noto-cjk fonts-ubuntu<br></code></pre></td></tr></table></figure><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ol><li>Download the MATLAB Linux installer from the official MathWorks portal.</li><li>Extract the <code>.zip</code> in your downloads folder.</li><li>From <strong>inside</strong> the container, navigate to that folder and run the installer:</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install<br></code></pre></td></tr></table></figure><p>Follow the GUI prompts. Since Distrobox shares your X11&#x2F;Wayland session, the installer window will appear natively on your Arch desktop.</p><h2 id="Desktop-Integration"><a href="#Desktop-Integration" class="headerlink" title="Desktop Integration"></a>Desktop Integration</h2><p>If you don’t want to open a terminal to launch MATLAB every time, create a desktop entry at <code>~/.local/share/applications/matlab.desktop</code>:</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Desktop Entry]</span><br><span class="hljs-attr">Name</span>=MATLAB<br><span class="hljs-attr">GenericName</span>=Technical Computing<br><span class="hljs-attr">Comment</span>=Run MATLAB inside Ubuntu container<br><span class="hljs-attr">Type</span>=Application<br><span class="hljs-comment"># Replace &lt;matlab_path&gt; with your actual path</span><br><span class="hljs-attr">Icon</span>=&lt;matlab_path&gt;/bin/glnxa64/cef_resources/matlab_icon.png<br><span class="hljs-attr">Exec</span>=distrobox enter matlab -- &lt;matlab_path&gt;/bin/matlab -desktop<br><span class="hljs-attr">Categories</span>=Science<span class="hljs-comment">;Education;Development;</span><br><span class="hljs-attr">Terminal</span>=<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure><p><strong>Note:</strong> Ensure the <code>Exec</code> path points exactly to where you installed MATLAB</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Matlab</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>matlab</tag>
+      
+      <tag>arch linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Nvim: Error While Loading Shared Libraries: /usr/lib/lua/5.1/lpeg.so: Cannot Open Shared Object File: No Such File or Directory</title>
     <link href="/posts/405d6517/"/>
     <url>/posts/405d6517/</url>

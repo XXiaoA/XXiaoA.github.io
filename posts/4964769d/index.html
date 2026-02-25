@@ -19,22 +19,23 @@
   <meta name="author" content="XXiaoA">
   <meta name="keywords" content="">
   
-    <meta name="description" content="会当凌绝顶，一览众山小 中考加油!✊">
+    <meta name="description" content="On Arch Linux, the MATLAB installer often crashes with a Segmentation fault (core dumped). In practice, this kind of crash could be caused by many reasons, one of which is that the libraries in Arch a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="中考加油">
-<meta property="og:url" content="https://xxiaoa.github.io/posts/db16e61e/index.html">
+<meta property="og:title" content="MATLAB Installation and Setup on Arch Linux">
+<meta property="og:url" content="https://xxiaoa.github.io/posts/4964769d/index.html">
 <meta property="og:site_name" content="XXiaoA&#39;s Blog">
-<meta property="og:description" content="会当凌绝顶，一览众山小 中考加油!✊">
+<meta property="og:description" content="On Arch Linux, the MATLAB installer often crashes with a Segmentation fault (core dumped). In practice, this kind of crash could be caused by many reasons, one of which is that the libraries in Arch a">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-25T12:16:37.000Z">
+<meta property="article:published_time" content="2026-02-25T22:26:48.000Z">
 <meta property="article:modified_time" content="2026-02-25T15:51:57.628Z">
 <meta property="article:author" content="XXiaoA">
-<meta property="article:tag" content="others">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="arch linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>中考加油 - XXiaoA&#39;s Blog</title>
+  <title>MATLAB Installation and Setup on Arch Linux - XXiaoA&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="中考加油"></span>
+            <span id="subtitle" data-typed-text="MATLAB Installation and Setup on Arch Linux"></span>
           
         </div>
 
@@ -225,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-25 12:16" pubdate>
-          June 25, 2022 pm
+        <time datetime="2026-02-25 22:26" pubdate>
+          February 25, 2026 pm
         </time>
       </span>
     
@@ -237,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14 words
+          91 words
         
       </span>
     
@@ -294,12 +295,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">中考加油</h1>
+            <h1 id="seo-header">MATLAB Installation and Setup on Arch Linux</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="会当凌绝顶，一览众山小"><a href="#会当凌绝顶，一览众山小" class="headerlink" title="会当凌绝顶，一览众山小 "></a>会当凌绝顶，一览众山小 <br></h1><h1 id="中考加油-✊"><a href="#中考加油-✊" class="headerlink" title="中考加油!✊"></a><font color="red">中考加油!✊</font></h1>
+                <p>On Arch Linux, the MATLAB installer often crashes with a <code>Segmentation fault (core dumped)</code>. In practice, this kind of crash could be caused by many reasons, one of which is that the libraries in Arch are too new.</p>
+<p>Instead of downgrading system libraries on the host, it’s much safer to run the installer inside a containerized environment using <strong>Distrobox</strong>. This gives MATLAB a more conservative runtime without polluting the Arch system, while still sharing your home directory and display session with the host.</p>
+<span id="more"></span>
+
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Ensure you have <code>distrobox</code> and a container engine (Podman or Docker) installed on your Arch host:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S distrobox podman<br></code></pre></td></tr></table></figure>
+
+<h2 id="Create-the-MATLAB-Environment"><a href="#Create-the-MATLAB-Environment" class="headerlink" title="Create the MATLAB Environment"></a>Create the MATLAB Environment</h2><p>We’ll use <strong>Ubuntu 22.04</strong> as the guest OS:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">distrobox create -n matlab --image ubuntu:22.04<br>distrobox enter matlab<br></code></pre></td></tr></table></figure>
+
+<p><strong>Inside the container</strong>, install the essential softwares and libraries:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install -y \<br>  xfce4-terminal xterm \<br>  dbus-x11 \<br>  libgbm1 libasound2 libnss3 libxtst6 libpulse0 \<br>  libgl1-mesa-dri libgl1-mesa-glx \<br>  fonts-noto-cjk fonts-ubuntu<br></code></pre></td></tr></table></figure>
+
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ol>
+<li>Download the MATLAB Linux installer from the official MathWorks portal.</li>
+<li>Extract the <code>.zip</code> in your downloads folder.</li>
+<li>From <strong>inside</strong> the container, navigate to that folder and run the installer:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install<br></code></pre></td></tr></table></figure>
+
+<p>Follow the GUI prompts. Since Distrobox shares your X11&#x2F;Wayland session, the installer window will appear natively on your Arch desktop.</p>
+<h2 id="Desktop-Integration"><a href="#Desktop-Integration" class="headerlink" title="Desktop Integration"></a>Desktop Integration</h2><p>If you don’t want to open a terminal to launch MATLAB every time, create a desktop entry at <code>~/.local/share/applications/matlab.desktop</code>:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Desktop Entry]</span><br><span class="hljs-attr">Name</span>=MATLAB<br><span class="hljs-attr">GenericName</span>=Technical Computing<br><span class="hljs-attr">Comment</span>=Run MATLAB inside Ubuntu container<br><span class="hljs-attr">Type</span>=Application<br><span class="hljs-comment"># Replace &lt;matlab_path&gt; with your actual path</span><br><span class="hljs-attr">Icon</span>=&lt;matlab_path&gt;/bin/glnxa64/cef_resources/matlab_icon.png<br><span class="hljs-attr">Exec</span>=distrobox enter matlab -- &lt;matlab_path&gt;/bin/matlab -desktop<br><span class="hljs-attr">Categories</span>=Science<span class="hljs-comment">;Education;Development;</span><br><span class="hljs-attr">Terminal</span>=<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong> Ensure the <code>Exec</code> path points exactly to where you installed MATLAB</p>
+
                 
               </div>
             
@@ -317,7 +343,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Others/" class="category-chain-item">Others</a>
+  <a href="/categories/Matlab/" class="category-chain-item">Matlab</a>
   
   
 
@@ -332,7 +358,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/others/" class="print-no-link">#others</a>
+        <a href="/tags/matlab/" class="print-no-link">#matlab</a>
+      
+        <a href="/tags/arch-linux/" class="print-no-link">#arch linux</a>
       
     </div>
   
@@ -344,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>中考加油</div>
-      <div>https://xxiaoa.github.io/posts/db16e61e/</div>
+      <div>MATLAB Installation and Setup on Arch Linux</div>
+      <div>https://xxiaoa.github.io/posts/4964769d/</div>
     </div>
     <div class="license-meta">
       
@@ -357,7 +385,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>June 25, 2022</div>
+          <div>February 25, 2026</div>
         </div>
       
       
@@ -389,18 +417,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/2dd3bdb5/" title="使用GitHub Action自动部署博客">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用GitHub Action自动部署博客</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/3be913fe/" title="Yt-Dlp: An Awesome Videos Downloader">
-                        <span class="hidden-mobile">Yt-Dlp: An Awesome Videos Downloader</span>
+                      <a href="/posts/405d6517/" title="Nvim: Error While Loading Shared Libraries: /usr/lib/lua/5.1/lpeg.so: Cannot Open Shared Object File: No Such File or Directory">
+                        <span class="hidden-mobile">Nvim: Error While Loading Shared Libraries: /usr/lib/lua/5.1/lpeg.so: Cannot Open Shared Object File: No Such File or Directory</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
