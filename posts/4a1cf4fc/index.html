@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://smms.app/image/h7ps3wQPj6EvaFt">
+  <link rel="icon" href="https://smms.app/image/h7ps3wQPj6EvaFt">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="XXiaoA">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="起因最近我遇到两个问题：fcitx5-rime 里和 noctalia 的 launcher 按 Shift+Tab 候选不上翻。 这两问题的共同点都在 Shift+Tab 这一个组合键上。我先怀疑是不是两个软件各自有 bug，但又觉得这俩可能是同一个原因。于是从 rime 下手，借助 AI 帮我 Debug。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修复 Shift-Tab 映射失败问题（Fcitx5-Rime &#x2F; Noctalia 为例）">
+<meta property="og:url" content="https://xxiaoa.github.io/posts/4a1cf4fc/index.html">
+<meta property="og:site_name" content="XXiaoA&#39;s Blog">
+<meta property="og:description" content="起因最近我遇到两个问题：fcitx5-rime 里和 noctalia 的 launcher 按 Shift+Tab 候选不上翻。 这两问题的共同点都在 Shift+Tab 这一个组合键上。我先怀疑是不是两个软件各自有 bug，但又觉得这俩可能是同一个原因。于是从 rime 下手，借助 AI 帮我 Debug。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-03T20:05:00.000Z">
+<meta property="article:modified_time" content="2026-08-04T11:34:53.867Z">
+<meta property="article:author" content="XXiaoA">
+<meta property="article:tag" content="fcitx5">
+<meta property="article:tag" content="rime">
+<meta property="article:tag" content="wayland">
+<meta property="article:tag" content="noctalia">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>修复 Shift-Tab 映射失败问题（Fcitx5-Rime / Noctalia 为例） - XXiaoA&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xxiaoa.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"OFGqGQUY04iif2OUAya330Gj-MdYXbMMI","app_key":"qlFaTFL7L15J3RBEaAW0u7qE","server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="XXiaoA's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>XXiaoA&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://s2.loli.net/2023/01/09/q6mhB72PxbkuAzT.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="修复 Shift-Tab 映射失败问题（Fcitx5-Rime / Noctalia 为例）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-04 04:05" pubdate>
+          August 4, 2026 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          762 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">修复 Shift-Tab 映射失败问题（Fcitx5-Rime / Noctalia 为例）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最近我遇到两个问题：fcitx5-rime 里和 noctalia 的 launcher 按 <code>Shift+Tab</code> 候选<strong>不上翻</strong>。 这两问题的共同点都在 <code>Shift+Tab</code> 这一个组合键上。我先怀疑是不是两个软件各自有 bug，但又觉得这俩可能是<strong>同一个原因</strong>。于是从 rime 下手，借助 AI 帮我 Debug。</p>
+<span id="more"></span>
+
+<h2 id="从-rime-下手排查"><a href="#从-rime-下手排查" class="headerlink" title="从 rime 下手排查"></a>从 rime 下手排查</h2><p>先复现现象：</p>
+<ul>
+<li>按 <code>Tab</code>：候选下翻正常。</li>
+<li>按 <code>Shift+Tab</code>：候选不上翻。如果是在 Kitty 里，那么它会吃掉这个按键，执行对应操作。</li>
+<li><code>default.custom.yaml</code> 里 <code>key_binder</code> &#x2F; <code>selector</code> 都写了 <code>Shift+Tab</code> 的绑定。</li>
+</ul>
+<p>排查核心过程的几步：</p>
+<ol>
+<li>跑 <code>wev</code> 然后按 <code>Shift+Tab</code>，可以看到输出的 keysym 是 <code>ISO_Left_Tab</code>(65056)，修饰位 Shift。</li>
+<li>fcitx5 的 <code>key_trace</code> 日志显示 <code>Key(Shift+Tab)</code>。（一开始我也被这个骗了，但实际上这是 <code>Key::toString()</code> 的<strong>显示层归一化</strong>——不等于传下去的就是 <code>Tab</code>。）</li>
+<li><code>Rime receive key</code> 日志打印 <code>Shift+ISO_Left_Tab</code>，说明按键确实进了 librime，只是没匹配上。</li>
+<li>读源码确认传参。 fcitx5-rime 的 <code>src/rimestate.cpp</code> 里 <code>keyEvent()</code> 用的是 <code>event.rawKey().sym()</code>，<strong>未归一化</strong>，所以交给 librime 的是 <code>&#123; sym=65056 (ISO_Left_Tab), modifier=Shift &#125;</code>。</li>
+<li>确认 librime 的匹配语义。 <code>KeyBindingProcessor::ProcessKeyEvent</code> 用 <code>std::map&lt;KeyEvent&gt;::find()</code> 做<strong>精确 (keycode, modifier) 匹配</strong>，不把 <code>ISO_Left_Tab</code> 当 <code>Tab</code> 归一化。</li>
+</ol>
+<p>后面几步（读 librime 源码、确认匹配语义）是借助 AI 完成的。</p>
+<h2 id="根因"><a href="#根因" class="headerlink" title="根因"></a>根因</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>解析结果 (keycode, modifier)</th>
+<th>与 (65056, Shift) 比较</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Shift+Tab</code></td>
+<td>(65289, Shift)</td>
+<td>不同 keycode</td>
+</tr>
+<tr>
+<td><code>ISO_Left_Tab</code></td>
+<td>(65056, 无修饰)</td>
+<td>修饰不匹配</td>
+</tr>
+<tr>
+<td><code>Shift+ISO_Left_Tab</code></td>
+<td>(65056, Shift)</td>
+<td>精确相等</td>
+</tr>
+</tbody></table>
+<p><code>Tab</code> 正常是因为它的事件 (65289, 0) 和配置里的 <code>Tab</code> 解析结果完全一致；而 <code>Shift+Tab</code> 失败，是因为 rime-prelude 的惯用配置只覆盖了 <code>Shift+Tab</code>(65289, Shift) 与 <code>ISO_Left_Tab</code>(65056, 无修饰) 两条，唯独漏掉了表格里第三种形态 <code>Shift+ISO_Left_Tab</code>(65056, Shift)，恰好就是实际事件。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>最终方案很简单, 其实就是用 <code>Shift+ISO_Left_Tab</code> 表示 <code>Shift+Tab</code>。rime 的话在 <code>~/.local/share/fcitx5/rime/default.custom.yaml</code> 加：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">patch:</span><br>  <span class="hljs-attr">selector/bindings:</span><br>    <span class="hljs-string">Shift+ISO_Left_Tab:</span> <span class="hljs-string">previous_candidate</span><br></code></pre></td></tr></table></figure>
+
+<p>然后我尝试修改 noctalia 的快捷键，发现也一样有效。在 <code>~/.local/state/noctalia/settings.toml</code> 里如下配置：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[keybinds]</span><br><span class="hljs-attr">down</span> = [ <span class="hljs-string">&quot;Down&quot;</span>, <span class="hljs-string">&quot;Tab&quot;</span> ]<br><span class="hljs-attr">up</span> = [ <span class="hljs-string">&quot;Up&quot;</span>, <span class="hljs-string">&quot;Shift+ISO_Left_Tab&quot;</span> ]<br></code></pre></td></tr></table></figure>
+
+<h2 id="简单解释-ISO-Left-Tab"><a href="#简单解释-ISO-Left-Tab" class="headerlink" title="简单解释 ISO_Left_Tab"></a>简单解释 ISO_Left_Tab</h2><p><code>Tab</code> 键的标准 keysym 是 <code>XK_Tab</code>(0xFF09 &#x2F; 65289)。但当键盘按下的是 <strong>Shift+Tab</strong>（而不是单独 Tab）时，底层报上来的不是 “Tab + Shift 修饰”，而是一个独立的 keysym：<code>ISO_Left_Tab</code>(0xFE20 &#x2F; 65056)。</p>
+<p>这个名字的含义：</p>
+<ul>
+<li><strong>ISO</strong> 指的是 ISO 键盘布局里定义的一组方向性符号，<code>ISO_Left_Tab</code> 本质上是反方向的 Tab，也就是常说的 backtab。</li>
+<li>很多程序只按”字面意思”解析配置，<code>Shift+Tab</code> 会解析成 <code>XK_Tab</code> + Shift 修饰，而不是 <code>ISO_Left_Tab</code>。</li>
+</ul>
+<p>Wayland 的 <code>wl_keyboard</code> 协议直接把物理键组合翻译成 keysym 交给你，所以 Shift+Tab 到手里就是 <code>ISO_Left_Tab</code>(65056) + Shift。如果程序是拿 raw keysym + 修饰位做精确匹配（不归一化），它这就永远都等不到 “<code>Tab</code> + Shift 修饰” 这个组合，必须显式绑定 <code>Shift+ISO_Left_Tab</code>。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>rime-ice #1156: <a target="_blank" rel="noopener" href="https://github.com/iDvel/rime-ice/issues/1156">https://github.com/iDvel/rime-ice/issues/1156</a></li>
+<li>librime #609: <a target="_blank" rel="noopener" href="https://github.com/rime/librime/issues/609">https://github.com/rime/librime/issues/609</a></li>
+<li>rime-prelude key_bindings.yaml: <a target="_blank" rel="noopener" href="https://github.com/rime/rime-prelude/blob/master/key_bindings.yaml">https://github.com/rime/rime-prelude/blob/master/key_bindings.yaml</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/fcitx5/" class="print-no-link">#fcitx5</a>
+      
+        <a href="/tags/rime/" class="print-no-link">#rime</a>
+      
+        <a href="/tags/wayland/" class="print-no-link">#wayland</a>
+      
+        <a href="/tags/noctalia/" class="print-no-link">#noctalia</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>修复 Shift-Tab 映射失败问题（Fcitx5-Rime / Noctalia 为例）</div>
+      <div>https://xxiaoa.github.io/posts/4a1cf4fc/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>XXiaoA</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 4, 2026</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4964769d/" title="MATLAB Installation and Setup on Arch Linux">
+                        <span class="hidden-mobile">MATLAB Installation and Setup on Arch Linux</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'XXiaoA/XXiaoA.github.io');
+      s.setAttribute('issue-term', 'url');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        Views: 
+        <span id="leancloud-site-pv"></span>
+        
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        Visitors: 
+        <span id="leancloud-site-uv"></span>
+        
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+  <script src="/js/out_of_date.js"></script>
+<!-- hexo injector body_end end --></body>
+</html>
